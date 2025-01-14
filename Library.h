@@ -4,6 +4,7 @@
 #include <iomanip>
 #include <string>
 #include<fstream>
+#include<vector>
 #include"include/json.hpp"
 
 using json = nlohmann::json;
@@ -13,22 +14,20 @@ using json = nlohmann::json;
 
 class Library {
 private:
-    Book* bookObj;     // Dynamic array for storing books (allocated on heap)
-    int maxCount;      // Maximum number of books that the library can hold
+    vector<Book> bookObj;     // Dynamic array for storing books (allocated on heap)
     int count;         // Current number of books in the library
 
 public:
     // Constructor
-    Library(int maxBooks = 200) {
-        maxCount = maxBooks;
+    Library()
+    {
         count = 0;
-        bookObj = new Book[maxBooks];  // Allocate memory on the heap
-    }
+    };
 
-    // Destructor
-    ~Library() {
-        delete[] bookObj;  // Release memory to avoid memory leaks
-    }
+    // Destructor (No need of Destructor as vector can manage the memory automatically)
+    //~Library() {
+    //    delete[] bookObj;  // Release memory to avoid memory leaks
+    //}
 
     // Methods
     void addBook(Book& obj);
@@ -42,9 +41,7 @@ public:
     
 
     // Getters (if needed)
-    int getMaxCount() const { return maxCount; }
     int getCount() const { return count; }
-    Book* getBooks() { return bookObj; }//Method to get a book from the Library
 };
 
 #endif
