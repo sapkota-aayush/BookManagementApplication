@@ -34,7 +34,7 @@ void Library::addBook(Book& obj)
 
 		bookObj.push_back(obj);
 		count++;
-	
+		cout << "Book added sucessfully.\n";
 }
 Book Library::findBook() const {
 	string findThroughAnything;
@@ -124,18 +124,16 @@ void Library::sortByIsbn()
 	}
 }  //Will visualizing this a bit better later 
 
-void to_json(json& j, const Library& lib)
-{
+void to_json(json& j, const Library& lib) {
 	j = json{
-		{"count",lib.count},
-		{"books",json::array()}
+		{"count", lib.bookObj.size()},  // Use size of vector
+		{"books", json::array()}
 	};
 
-	//Serialize each book in the library and add it to the books array in JSON
-	for (int i = 0; i < lib.count; i++)
-	{
+	// Serialize each book in the library and add it to the books array in JSON
+	for (const auto& book : lib.bookObj) {
 		json bookJson;
-		to_json(bookJson, lib.bookObj[i]);
+		to_json(bookJson, book);  // Serialize Book
 		j["books"].push_back(bookJson);
 	}
 }

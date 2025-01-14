@@ -91,8 +91,9 @@ int main()
             outFile << jLibrary.dump(4);  // Save as pretty JSON
             outFile.close();
             cout << "Library data has been saved to library_data.json\n";
+            break;
         }
-        break;
+        
 
         case 7:
             cout << "Thank you for using the Online Library. Goodbye!\n";

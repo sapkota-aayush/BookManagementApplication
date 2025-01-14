@@ -4,8 +4,8 @@
 Book::Book(string initialTitle, string initialAuthor, string initialIsbn, int initialId)
 {
 	title = (initialTitle.empty()) ? "Title is empty" : initialTitle;
-	title = (initialAuthor.empty()) ? "Title is empty" : initialAuthor;
-	title = (initialIsbn.empty()) ? "Title is empty" : initialIsbn;
+	author = (initialAuthor.empty()) ? "Title is empty" : initialAuthor;
+	Isbn = (initialIsbn.empty()) ? "Title is empty" : initialIsbn;
 }
 
 void Book::displayAllBook()const
