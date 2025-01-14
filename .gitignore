@@ -1,3 +1,6 @@
 .vs/
-*.db
-*.ipch
+*.user
+*.suo
+*.userosscache
+*.sln.docstates
+.ipch/

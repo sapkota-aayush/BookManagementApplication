@@ -28,8 +28,8 @@ public:
 	//getter(in-line)
 
 	string getTitle()const { return title; }
-	string getAuthor() { return author; }
-	string getIsbn() { return Isbn; }
+	string getAuthor() const{ return author; }
+	string getIsbn()const { return Isbn; }
 	
 	//Member Functions
 

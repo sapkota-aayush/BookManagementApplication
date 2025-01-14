@@ -5,9 +5,7 @@ using namespace std;
 void Library::addBook(Book& obj)
 {
 	string title; string author; string Isbn;
-	if (count < maxCount)
-	{
-		do 
+		do
 		{
 			cout << "Enter a book title: ";
 			getline(cin, title);
@@ -15,7 +13,7 @@ void Library::addBook(Book& obj)
 			{
 				cout << "Invalid Input.Enter again: ";
 			}
-			
+
 		} while (!isValidString(title));
 		obj.setTitle(title);
 
@@ -34,38 +32,33 @@ void Library::addBook(Book& obj)
 		getline(cin, Isbn);
 		obj.setIsbn(Isbn);
 
-		bookObj[count] = obj;
+		bookObj.push_back(obj);
 		count++;
-	}
-	else
-	{
-		cout << "Library is full. Can't add more Books :(\n";
-	}
+		cout << "Book added sucessfully.\n";
 }
-
 Book Library::findBook() const {
 	string findThroughAnything;
-	cout << "Enter any details of book you want to find: ";
+	cout << "Enter any details of the book you want to find: ";
 	getline(cin, findThroughAnything);
 	string lowercaseInput = convertToLower(findThroughAnything);
 
-	// Search through the array of books in the library
-	for (int i = 0; i < count; i++) {
-		string lowercaseTitle = convertToLower(bookObj[i].getTitle());
-		string lowercaseAuthor = convertToLower(bookObj[i].getAuthor());
-		string lowercaseIsbn = convertToLower(bookObj[i].getIsbn());
+	// Search through the vector of books in the library
+	for (const auto& book : bookObj) {
+		string lowercaseTitle = convertToLower(book.getTitle());
+		string lowercaseAuthor = convertToLower(book.getAuthor());
+		string lowercaseIsbn = convertToLower(book.getIsbn());
 
 		if (lowercaseTitle.find(lowercaseInput) != string::npos ||
 			lowercaseAuthor.find(lowercaseInput) != string::npos ||
 			lowercaseIsbn.find(lowercaseInput) != string::npos) {
-			return bookObj[i];  // Return the found book
+			return book;  // Return the found book
 		}
 	}
 
-	// If book is not found, return a default Book or handle it as you need
+	// If the book is not found, return a default Book or handle it as you need
 	// For example, returning an empty book:
 	cout << "Book not Found in the library.\n";
-	return Book(); //Calls the default constructor
+	return Book(); // Calls the default constructor
 }
 
 
@@ -75,40 +68,36 @@ void Library::removeBook()
 	cout << "Enter the title you want to delete: ";
 	getline(cin, findThroughTitle);
 	bool bookFound = false;
-
-	for (int i = 0; i < count; i++)
+	for (int i = 0; i < bookObj.size(); i++)
 	{
 		if (bookObj[i].getTitle() == findThroughTitle)
 		{
-			for (int j = i; j < count - 1; j++)
-			{
-				bookObj[j] = bookObj[j + 1];
-			}
-			count--;
+			bookObj.erase(bookObj.begin() + i);
 			bookFound = true;
-			cout << "Book with the title " << findThroughTitle << " has been removed\n";
+			cout << "Book with the titel " << bookObj[i].getTitle() << " has been removed.\n";
 			break;
 		}
 	}
 	if (!bookFound)
 	{
-		cout << "Book is not found in the Library :(\n";
+		cout << "Book is not found in the library :(\n";
 	}
+	
 
 }
 
 void Library::displayAllBooks() const
 {
-	if (count == 0)
+	if (bookObj.empty())
 	{
 		cout << "The library is empty. No books to display.\n";
 		return;
 	}
-
-	for (int i = 0; i < count; i++)
+	int bookNumber = 1; //Just to display book number 
+	for (const auto & book:bookObj)
 	{
-		cout << "Book " << i + 1 << " details:\n";
-		bookObj[i].displayAllBook(); // Call the Book class's display function
+		cout << "Book " << bookNumber++ << " details:\n";
+		book.displayAllBook(); // Call the Book class's display function
 		cout << "---------------------------------\n";
 	}
 }
@@ -135,23 +124,23 @@ void Library::sortByIsbn()
 	}
 }  //Will visualizing this a bit better later 
 
-void to_json(json& j, const Library& lib)
-{
-	j = json{ {"maxCount",lib.maxCount},{"count",lib.count},{"books",json::array()}};
-	//seriallizing each book in the library and addiding it to the books array in JSON
-	for (int i = 0; i < lib.count; i++)
-	{
+void to_json(json& j, const Library& lib) {
+	j = json{
+		{"count", lib.bookObj.size()},  // Use size of vector
+		{"books", json::array()}
+	};
+
+	// Serialize each book in the library and add it to the books array in JSON
+	for (const auto& book : lib.bookObj) {
 		json bookJson;
-		to_json(bookJson, lib.bookObj[i]);
+		to_json(bookJson, book);  // Serialize Book
 		j["books"].push_back(bookJson);
 	}
 }
 
-void Library::loadFromFile(const string& fileName)
-{
+void Library::loadFromFile(const string& fileName) {
 	ifstream inFile(fileName);
-	if (!inFile)
-	{
+	if (!inFile) {
 		cout << "Error: Could not open the file " << fileName << " for reading!\n";
 		return;
 	}
@@ -159,18 +148,16 @@ void Library::loadFromFile(const string& fileName)
 	json jLibrary;
 	inFile >> jLibrary;
 
-	// Allocate and initialize book array
-	delete[] bookObj;
-	count = 0; // Reset count, you want to re-populate from file
-	maxCount = jLibrary.at("maxCount").get<int>(); // Ensure this exists
-	count = jLibrary.at("count").get<int>(); // Ensure this exists
-	bookObj = new Book[maxCount];
+	// Clear the existing vector before loading new data
+	bookObj.clear();  // Now we're using bookObj as the vector
 
-	// Deserialize books data
-	for (int i = 0; i < count; ++i) {
+	// Deserialize books data from JSON and add them to the vector
+	const json& booksJson = jLibrary["books"];
+
+	for (const auto& bookJson : booksJson) {
 		Book book;
-		from_json(jLibrary["books"][i], book); // Deserialize each book
-		bookObj[i] = book;  // Assign to bookObj
+		from_json(bookJson, book);  // Deserialize into a Book object
+		bookObj.push_back(book);    // Add the Book to the bookObj vector
 	}
 
 	inFile.close();
