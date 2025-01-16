@@ -5,37 +5,55 @@ using namespace std;
 void Library::addBook(Book& obj)
 {
 	string title; string author; string Isbn;
-		do
+	do
+	{
+		cout << "Enter a book title: ";
+		getline(cin, title);
+		if (!isValidString(title))
 		{
-			cout << "Enter a book title: ";
-			getline(cin, title);
-			if (!isValidString(title))
-			{
-				cout << "Invalid Input.Enter again: ";
-			}
+			cout << "Invalid Input.Enter again: ";
+		}
 
-		} while (!isValidString(title));
-		obj.setTitle(title);
+	} while (!isValidString(title));
+	obj.setTitle(title);
 
-		do
+	do
+	{
+		cout << "Enter a book Author: ";
+		getline(cin, author);
+		if (!isValidString(author))
 		{
-			cout << "Enter a book Author: ";
-			getline(cin, author);
-			if (!isValidString(author))
-			{
-				cout << "Invalid Input. Enter again: ";
-			}
-		} while (!isValidString(author));
-		obj.setAuthor(author);
+			cout << "Invalid Input. Enter again: ";
+		}
+	} while (!isValidString(author));
+	obj.setAuthor(author);
 
-		cout << "Enter a book Isbn: ";
-		getline(cin, Isbn);
-		obj.setIsbn(Isbn);
+	cout << "Enter a book Isbn: ";
+	getline(cin, Isbn);
+	obj.setIsbn(Isbn);
 
-		bookObj.push_back(obj);
-		count++;
-		cout << "Book added sucessfully.\n";
+	bookObj.push_back(obj);
+	count++;
+
+	// Insert book into the database
+	try {
+		sql::PreparedStatement* pstmt;
+		pstmt = con->prepareStatement("INSERT INTO Library(title, author, isbn) VALUES(?, ?, ?)");
+		pstmt->setString(1, title);
+		pstmt->setString(2, author);
+		pstmt->setString(3, Isbn);
+		pstmt->execute();
+		delete pstmt;
+		cout << "\nBook added successfully to the library database!\n";
+	}
+	catch (sql::SQLException& e) {
+		cout << "SQL Exception: " << e.what() << endl;
+	}
+
+
 }
+
+
 Book Library::findBook() const {
 	string findThroughAnything;
 	cout << "Enter any details of the book you want to find: ";

@@ -10,6 +10,7 @@
 #include <cppconn/statement.h>
 #include <mysql_connection.h>
 #include <mysql_driver.h>
+#include <cppconn/prepared_statement.h>
 #include"include/json.hpp"
 
 using json = nlohmann::json;
