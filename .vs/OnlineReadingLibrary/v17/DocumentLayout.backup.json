@@ -1,36 +1,12 @@
 {
   "Version": 1,
   "WorkspaceRootPath": "C:\\Users\\aayus\\OneDrive - St. Lawrence College\\CPA\\Semester 3\\OOP C\u002B\u002B\\Practice modules\\OnlineReadingLibrary\\",
-<<<<<<< HEAD
-  "Documents": [],
-=======
   "Documents": [
-    {
-      "AbsoluteMoniker": "D:0:0:{1B9070B4-9F0A-4D9F-B3AE-041934A14006}|OnlineReadingLibrary.vcxproj|C:\\Users\\aayus\\OneDrive - St. Lawrence College\\CPA\\Semester 3\\OOP C\u002B\u002B\\Practice modules\\OnlineReadingLibrary\\Library.cpp||{D0E1A5C6-B359-4E41-9B60-3365922C2A22}",
-      "RelativeMoniker": "D:0:0:{1B9070B4-9F0A-4D9F-B3AE-041934A14006}|OnlineReadingLibrary.vcxproj|solutionrelative:Library.cpp||{D0E1A5C6-B359-4E41-9B60-3365922C2A22}"
-    },
-    {
-      "AbsoluteMoniker": "D:0:0:{1B9070B4-9F0A-4D9F-B3AE-041934A14006}|OnlineReadingLibrary.vcxproj|C:\\Users\\aayus\\OneDrive - St. Lawrence College\\CPA\\Semester 3\\OOP C\u002B\u002B\\Practice modules\\OnlineReadingLibrary\\ClientCode.cpp||{D0E1A5C6-B359-4E41-9B60-3365922C2A22}",
-      "RelativeMoniker": "D:0:0:{1B9070B4-9F0A-4D9F-B3AE-041934A14006}|OnlineReadingLibrary.vcxproj|solutionrelative:ClientCode.cpp||{D0E1A5C6-B359-4E41-9B60-3365922C2A22}"
-    },
     {
       "AbsoluteMoniker": "D:0:0:{1B9070B4-9F0A-4D9F-B3AE-041934A14006}|OnlineReadingLibrary.vcxproj|C:\\Users\\aayus\\OneDrive - St. Lawrence College\\CPA\\Semester 3\\OOP C\u002B\u002B\\Practice modules\\OnlineReadingLibrary\\Book.cpp||{D0E1A5C6-B359-4E41-9B60-3365922C2A22}",
       "RelativeMoniker": "D:0:0:{1B9070B4-9F0A-4D9F-B3AE-041934A14006}|OnlineReadingLibrary.vcxproj|solutionrelative:Book.cpp||{D0E1A5C6-B359-4E41-9B60-3365922C2A22}"
-    },
-    {
-      "AbsoluteMoniker": "D:0:0:{1B9070B4-9F0A-4D9F-B3AE-041934A14006}|OnlineReadingLibrary.vcxproj|C:\\Users\\aayus\\OneDrive - St. Lawrence College\\CPA\\Semester 3\\OOP C\u002B\u002B\\Practice modules\\OnlineReadingLibrary\\Library.h||{D0E1A5C6-B359-4E41-9B60-3365922C2A22}",
-      "RelativeMoniker": "D:0:0:{1B9070B4-9F0A-4D9F-B3AE-041934A14006}|OnlineReadingLibrary.vcxproj|solutionrelative:Library.h||{D0E1A5C6-B359-4E41-9B60-3365922C2A22}"
-    },
-    {
-      "AbsoluteMoniker": "D:0:0:{1B9070B4-9F0A-4D9F-B3AE-041934A14006}|OnlineReadingLibrary.vcxproj|C:\\Users\\aayus\\OneDrive - St. Lawrence College\\CPA\\Semester 3\\OOP C\u002B\u002B\\Practice modules\\OnlineReadingLibrary\\Book.h||{D0E1A5C6-B359-4E41-9B60-3365922C2A22}",
-      "RelativeMoniker": "D:0:0:{1B9070B4-9F0A-4D9F-B3AE-041934A14006}|OnlineReadingLibrary.vcxproj|solutionrelative:Book.h||{D0E1A5C6-B359-4E41-9B60-3365922C2A22}"
-    },
-    {
-      "AbsoluteMoniker": "D:0:0:{1B9070B4-9F0A-4D9F-B3AE-041934A14006}|OnlineReadingLibrary.vcxproj|C:\\Users\\aayus\\OneDrive - St. Lawrence College\\CPA\\Semester 3\\OOP C\u002B\u002B\\Practice modules\\OnlineReadingLibrary\\Validation.h||{D0E1A5C6-B359-4E41-9B60-3365922C2A22}",
-      "RelativeMoniker": "D:0:0:{1B9070B4-9F0A-4D9F-B3AE-041934A14006}|OnlineReadingLibrary.vcxproj|solutionrelative:Validation.h||{D0E1A5C6-B359-4E41-9B60-3365922C2A22}"
     }
   ],
->>>>>>> Phase2/Feature1
   "DocumentGroupContainers": [
     {
       "Orientation": 0,
@@ -38,96 +14,24 @@
       "DocumentGroups": [
         {
           "DockedWidth": 200,
-<<<<<<< HEAD
-          "SelectedChildIndex": -1,
-=======
-          "SelectedChildIndex": 3,
->>>>>>> Phase2/Feature1
+          "SelectedChildIndex": 1,
           "Children": [
             {
               "$type": "Bookmark",
               "Name": "ST:128:0:{13b12e3e-c1b4-4539-9371-4fe9a0d523fc}"
             },
             {
-<<<<<<< HEAD
-              "$type": "Bookmark",
-              "Name": "ST:0:0:{1c4feeaa-4718-4aa9-859d-94ce25d182ba}"
-=======
               "$type": "Document",
-              "DocumentIndex": 2,
+              "DocumentIndex": 0,
               "Title": "Book.cpp",
               "DocumentMoniker": "C:\\Users\\aayus\\OneDrive - St. Lawrence College\\CPA\\Semester 3\\OOP C\u002B\u002B\\Practice modules\\OnlineReadingLibrary\\Book.cpp",
               "RelativeDocumentMoniker": "Book.cpp",
               "ToolTip": "C:\\Users\\aayus\\OneDrive - St. Lawrence College\\CPA\\Semester 3\\OOP C\u002B\u002B\\Practice modules\\OnlineReadingLibrary\\Book.cpp",
               "RelativeToolTip": "Book.cpp",
-              "ViewState": "AgIAAAkAAAAAAAAAAAAAAAoAAAAgAAAAAAAAAA==",
+              "ViewState": "AgIAAAMAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA==",
               "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000677|",
-              "WhenOpened": "2025-01-14T02:12:30.566Z",
+              "WhenOpened": "2025-01-14T15:01:16.569Z",
               "EditorCaption": ""
-            },
-            {
-              "$type": "Document",
-              "DocumentIndex": 4,
-              "Title": "Book.h",
-              "DocumentMoniker": "C:\\Users\\aayus\\OneDrive - St. Lawrence College\\CPA\\Semester 3\\OOP C\u002B\u002B\\Practice modules\\OnlineReadingLibrary\\Book.h",
-              "RelativeDocumentMoniker": "Book.h",
-              "ToolTip": "C:\\Users\\aayus\\OneDrive - St. Lawrence College\\CPA\\Semester 3\\OOP C\u002B\u002B\\Practice modules\\OnlineReadingLibrary\\Book.h",
-              "RelativeToolTip": "Book.h",
-              "ViewState": "AgIAAAkAAAAAAAAAAAAAABMAAAA1AAAAAAAAAA==",
-              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000680|",
-              "WhenOpened": "2025-01-14T02:04:47.85Z"
-            },
-            {
-              "$type": "Document",
-              "DocumentIndex": 0,
-              "Title": "Library.cpp",
-              "DocumentMoniker": "C:\\Users\\aayus\\OneDrive - St. Lawrence College\\CPA\\Semester 3\\OOP C\u002B\u002B\\Practice modules\\OnlineReadingLibrary\\Library.cpp",
-              "RelativeDocumentMoniker": "Library.cpp",
-              "ToolTip": "C:\\Users\\aayus\\OneDrive - St. Lawrence College\\CPA\\Semester 3\\OOP C\u002B\u002B\\Practice modules\\OnlineReadingLibrary\\Library.cpp",
-              "RelativeToolTip": "Library.cpp",
-              "ViewState": "AgIAAGwAAAAAAAAAAAAAAIsAAAAAAAAAAAAAAA==",
-              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000677|",
-              "WhenOpened": "2025-01-14T01:53:04.564Z",
-              "EditorCaption": ""
-            },
-            {
-              "$type": "Document",
-              "DocumentIndex": 3,
-              "Title": "Library.h",
-              "DocumentMoniker": "C:\\Users\\aayus\\OneDrive - St. Lawrence College\\CPA\\Semester 3\\OOP C\u002B\u002B\\Practice modules\\OnlineReadingLibrary\\Library.h",
-              "RelativeDocumentMoniker": "Library.h",
-              "ToolTip": "C:\\Users\\aayus\\OneDrive - St. Lawrence College\\CPA\\Semester 3\\OOP C\u002B\u002B\\Practice modules\\OnlineReadingLibrary\\Library.h",
-              "RelativeToolTip": "Library.h",
-              "ViewState": "AgIAAAAAAAAAAAAAAAAAACsAAAAqAAAAAAAAAA==",
-              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000680|",
-              "WhenOpened": "2025-01-12T16:57:16.614Z",
-              "EditorCaption": ""
-            },
-            {
-              "$type": "Document",
-              "DocumentIndex": 1,
-              "Title": "ClientCode.cpp",
-              "DocumentMoniker": "C:\\Users\\aayus\\OneDrive - St. Lawrence College\\CPA\\Semester 3\\OOP C\u002B\u002B\\Practice modules\\OnlineReadingLibrary\\ClientCode.cpp",
-              "RelativeDocumentMoniker": "ClientCode.cpp",
-              "ToolTip": "C:\\Users\\aayus\\OneDrive - St. Lawrence College\\CPA\\Semester 3\\OOP C\u002B\u002B\\Practice modules\\OnlineReadingLibrary\\ClientCode.cpp",
-              "RelativeToolTip": "ClientCode.cpp",
-              "ViewState": "AgIAAEIAAAAAAAAAAAAAAFIAAAASAAAAAAAAAA==",
-              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000677|",
-              "WhenOpened": "2025-01-12T16:56:09.326Z",
-              "EditorCaption": ""
-            },
-            {
-              "$type": "Document",
-              "DocumentIndex": 5,
-              "Title": "Validation.h",
-              "DocumentMoniker": "C:\\Users\\aayus\\OneDrive - St. Lawrence College\\CPA\\Semester 3\\OOP C\u002B\u002B\\Practice modules\\OnlineReadingLibrary\\Validation.h",
-              "RelativeDocumentMoniker": "Validation.h",
-              "ToolTip": "C:\\Users\\aayus\\OneDrive - St. Lawrence College\\CPA\\Semester 3\\OOP C\u002B\u002B\\Practice modules\\OnlineReadingLibrary\\Validation.h",
-              "RelativeToolTip": "Validation.h",
-              "ViewState": "AgIAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA==",
-              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000680|",
-              "WhenOpened": "2025-01-12T16:55:59.078Z"
->>>>>>> Phase2/Feature1
             }
           ]
         }

@@ -5,12 +5,24 @@
 #include <string>
 #include<fstream>
 #include<vector>
+#include <cppconn/driver.h>
+#include <cppconn/exception.h>
+#include <cppconn/statement.h>
+#include <mysql_connection.h>
+#include <mysql_driver.h>
 #include"include/json.hpp"
 
 using json = nlohmann::json;
 
 #ifndef LIBRARY_H
 #define LIBRARY_H
+
+
+// MYSQL Connection settings
+const string DB_HOST = "tcp://127.0.0.1:3306"; // MySQL server address
+const string DB_USER = "root";
+const string DB_PASSWORD = "Happy@890123";
+const string DB_NAME = "shopping_cart";
 
 class Library {
 private:
