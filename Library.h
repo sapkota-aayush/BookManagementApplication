@@ -28,18 +28,33 @@ class Library {
 private:
     vector<Book> bookObj;     // Dynamic array for storing books (allocated on heap)
     int count;         // Current number of books in the library
+    sql::Connection* con;
 
 public:
     // Constructor
     Library()
     {
         count = 0;
+        try
+        {
+            sql::mysql::MySQL_Driver* driver;
+            driver = sql::mysql::get_mysql_driver_instance();
+            con = driver->connect(DB_HOST, DB_USER, DB_PASSWORD);
+            con->setSchema(DB_NAME);
+            cout << "Database connection established.\n";
+        }
+        catch (sql::SQLException& e)
+        {
+            cout << "Could not connect to server. Error message: " << e.what() << "\n";
+            exit(1);
+        }
     };
 
     // Destructor (No need of Destructor as vector can manage the memory automatically)
-    //~Library() {
-    //    delete[] bookObj;  // Release memory to avoid memory leaks
-    //}
+    ~Library() {
+        delete con;
+        //delete[] bookObj;  // Release memory to avoid memory leaks
+    }
 
     // Methods
     void addBook(Book& obj);
