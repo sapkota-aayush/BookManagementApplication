@@ -18,7 +18,7 @@ private:
 	
 public:
 	Book() { title = "NA"; author = "NA"; Isbn = "NA"; }
-	Book(string, string, string, int);
+	Book(string, string, string);
 	//setter
 	void setTitle(const string&);
 	void setAuthor(const string&);

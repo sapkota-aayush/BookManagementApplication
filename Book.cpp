@@ -1,7 +1,7 @@
 #include"Book.h"
 //Implementation file for Book
 
-Book::Book(string initialTitle, string initialAuthor, string initialIsbn, int initialId)
+Book::Book(string initialTitle, string initialAuthor, string initialIsbn)
 {
 	title = (initialTitle.empty()) ? "Title is empty" : initialTitle;
 	author = (initialAuthor.empty()) ? "Title is empty" : initialAuthor;
@@ -15,6 +15,7 @@ void Book::displayAllBook()const
 		<< "\nISBN: " << Isbn << endl;
 
 }
+
 // Setter Methods
 void Book::setTitle(const string & t) {
     title = t;

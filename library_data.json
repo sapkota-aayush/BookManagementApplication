@@ -9,7 +9,12 @@
             "author": "aayu",
             "isbn": "434",
             "title": "Man of words"
+        },
+        {
+            "author": "Robert Kayosaki",
+            "isbn": "23352342",
+            "title": "Rich Dad Poor Dad"
         }
     ],
-    "count": 2
+    "count": 3
 }

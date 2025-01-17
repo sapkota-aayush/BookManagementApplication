@@ -1,4 +1,14 @@
-﻿  OnlineReadingLibrary.vcxproj -> C:\Users\aayus\OneDrive - St. Lawrence College\CPA\Semester 3\OOP C++\Practice modules\OnlineReadingLibrary\x64\Release\OnlineReadingLibrary.exe
+﻿  Book.cpp
+  ClientCode.cpp
+  Library.cpp
+  Generating code
+  28 of 1745 functions ( 1.6%) were compiled, the rest were copied from previous compilation.
+    5 functions were new in current compilation
+    183 functions had inline decision re-evaluated but remain unchanged
+  Finished generating code
+  OnlineReadingLibrary.vcxproj -> C:\Users\aayus\OneDrive - St. Lawrence College\CPA\Semester 3\OOP C++\Practice modules\OnlineReadingLibrary\x64\Release\OnlineReadingLibrary.exe
+  'pwsh.exe' is not recognized as an internal or external command,
+  operable program or batch file.
   C:\mysql-connector-c++-9.1.0-winx64\lib64\libcrypto-3-x64.dll
   C:\mysql-connector-c++-9.1.0-winx64\lib64\libssl-3-x64.dll
   C:\mysql-connector-c++-9.1.0-winx64\lib64\mysqlcppconn-10-vs14.dll

@@ -23,7 +23,7 @@ using json = nlohmann::json;
 const string DB_HOST = "tcp://127.0.0.1:3306"; // MySQL server address
 const string DB_USER = "root";
 const string DB_PASSWORD = "Happy@890123";
-const string DB_NAME = "shopping_cart";
+const string DB_NAME = "BookStore";
 
 class Library {
 private:

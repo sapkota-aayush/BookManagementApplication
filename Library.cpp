@@ -60,23 +60,60 @@ Book Library::findBook() const {
 	getline(cin, findThroughAnything);
 	string lowercaseInput = convertToLower(findThroughAnything);
 
-	// Search through the vector of books in the library
-	for (const auto& book : bookObj) {
-		string lowercaseTitle = convertToLower(book.getTitle());
-		string lowercaseAuthor = convertToLower(book.getAuthor());
-		string lowercaseIsbn = convertToLower(book.getIsbn());
 
-		if (lowercaseTitle.find(lowercaseInput) != string::npos ||
-			lowercaseAuthor.find(lowercaseInput) != string::npos ||
-			lowercaseIsbn.find(lowercaseInput) != string::npos) {
-			return book;  // Return the found book
+	//adding mysql intergration to find the boo
+	try
+	{
+		sql::PreparedStatement* pstmt;
+		pstmt = con->prepareStatement(
+                "SELECT * FROM Library WHERE LOWER(title) LIKE ? OR LOWER(author)LIKE ? OR LOWER (isbn)LIKE ?");
+		string searchPattern = "%" + lowercaseInput + "%";
+		pstmt->setString(1, searchPattern); //setstring assigns values
+		pstmt->setString(2, searchPattern);
+		pstmt->setString(3, searchPattern);
+
+		sql::ResultSet* res = pstmt->executeQuery();
+
+		if (res->next()) {
+			// Book found, create and return a Book object
+			Book foundBook(res->getString("title"),
+				res->getString("author"),
+				res->getString("isbn"));
+			delete res;
+			delete pstmt;
+			return foundBook;
 		}
+		else {
+			delete res;
+			delete pstmt;
+			cout << "Book not found in the library.\n";
+			return Book(); // Return an empty book
+		}
+
+	}
+	catch (sql::SQLException& e) {
+		cout << "SQL Exception: " << e.what() << endl;
+		return Book(); // Return an empty book in case of exception
 	}
 
-	// If the book is not found, return a default Book or handle it as you need
-	// For example, returning an empty book:
-	cout << "Book not Found in the library.\n";
-	return Book(); // Calls the default constructor
+	/*-----------previous finding------------------*/
+	//// Search through the vector of books in the library
+	//for (const auto& book : bookObj) {
+	//	string lowercaseTitle = convertToLower(book.getTitle());
+	//	string lowercaseAuthor = convertToLower(book.getAuthor());
+	//	string lowercaseIsbn = convertToLower(book.getIsbn());
+
+	//	if (lowercaseTitle.find(lowercaseInput) != string::npos ||
+	//		lowercaseAuthor.find(lowercaseInput) != string::npos ||
+	//		lowercaseIsbn.find(lowercaseInput) != string::npos) {
+	//		return book;  // Return the found book
+	//	}
+	//}
+
+	//// If the book is not found, return a default Book or handle it as you need
+	//// For example, returning an empty book:
+	//cout << "Book not Found in the library.\n";
+	//return Book(); // Calls the default constructor
 }
 
 
