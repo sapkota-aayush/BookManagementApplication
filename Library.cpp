@@ -55,10 +55,10 @@ void Library::addBook(Book& obj)
 
 
 Book Library::findBook() const {
-	string findThroughAnything;
+	string searchQuery;
 	cout << "Enter any details of the book you want to find: ";
-	getline(cin, findThroughAnything);
-	string lowercaseInput = convertToLower(findThroughAnything);
+	getline(cin, searchQuery);
+	string lowercaseInput = convertToLower(searchQuery);
 
 
 	//adding mysql intergration to find the boo
@@ -119,11 +119,47 @@ Book Library::findBook() const {
 
 void Library::removeBook()
 {
-	string findThroughTitle;
+	string searchQuery;
 	cout << "Enter the title you want to delete: ";
-	getline(cin, findThroughTitle);
+	getline(cin, searchQuery);
+	string lowercaseInput = convertToLower(searchQuery);
 	bool bookFound = false;
-	for (int i = 0; i < bookObj.size(); i++)
+
+	//adding mysql intergration to find the boo
+	try
+	{
+		sql::PreparedStatement* pstmt;
+		pstmt = con->prepareStatement(
+			"SELECT * FROM Library WHERE LOWER(title) LIKE ? OR LOWER(author)LIKE ? OR LOWER (isbn)LIKE ?");
+		string searchPattern = "%" + lowercaseInput + "%";
+		pstmt->setString(1, searchPattern); //setstring assigns values
+		pstmt->setString(2, searchPattern);
+		pstmt->setString(3, searchPattern);
+
+		sql::ResultSet* res = pstmt->executeQuery();
+
+		if (res->next())
+		{
+			bookFound = true;
+			cout << "Book Found: " << res->getString("title") << " by " << res->getString("author") << endl;
+			//Delete from the database
+			sql::PreparedStatement* deletePstmt = con->prepareStatement("DELETE FROM Library WHERE title = ? AND author = ? AND isbn = ?");
+			deletePstmt->setString(1, res->getString("title"));
+			deletePstmt->setString(2, res->getString("author"));
+			deletePstmt->setString(3, res->getString("isbn"));
+			deletePstmt->execute();
+		}
+		delete res;
+		delete pstmt;
+	}
+
+	catch (sql::SQLException& e) {
+		cout << "SQL Exception: " << e.what() << endl;
+		
+	}
+
+
+	/*for (int i = 0; i < bookObj.size(); i++)
 	{
 		if (bookObj[i].getTitle() == findThroughTitle)
 		{
@@ -137,23 +173,53 @@ void Library::removeBook()
 	{
 		cout << "Book is not found in the library :(\n";
 	}
-	
+	*/
 
 }
 
 void Library::displayAllBooks() const
 {
-	if (bookObj.empty())
+	//if (bookObj.empty())
+	//{
+	//	cout << "The library is empty. No books to display.\n";
+	//	return;
+	//}
+	//int bookNumber = 1; //Just to display book number 
+	//for (const auto & book:bookObj)
+	//{
+	//	cout << "Book " << bookNumber++ << " details:\n";
+	//	book.displayAllBook(); // Call the Book class's display function
+	//	cout << "---------------------------------\n";
+	//}
+	try
 	{
-		cout << "The library is empty. No books to display.\n";
-		return;
+		sql::PreparedStatement* pstmt = con->prepareStatement("SELECT * FROM Library");
+		sql::ResultSet* res = pstmt->executeQuery();
+		if (res->next())
+		{
+			cout << "\nBooks from the database:\n";
+			//Loop to fetch each book from the database
+			int dbBookNumber = 1;
+			do
+			{
+				cout << "Book " << dbBookNumber++ << " details (from database):\n";
+				cout << "Title: " << res->getString("title") << endl;
+				cout << "Title: " << res->getString("title") << endl;
+				cout << "Author: " << res->getString("author") << endl;
+				cout << "ISBN: " << res->getString("isbn") << endl;
+				cout << "---------------------------------\n";  // Separator between books
+			} while (res->next());
+		}
+		else
+		{
+			cout << "\nNo books in the database.\n";
+		}
+		delete res;
+		delete pstmt;
 	}
-	int bookNumber = 1; //Just to display book number 
-	for (const auto & book:bookObj)
+	catch (sql::SQLException& e)
 	{
-		cout << "Book " << bookNumber++ << " details:\n";
-		book.displayAllBook(); // Call the Book class's display function
-		cout << "---------------------------------\n";
+		cout << "SQL Exception: " << e.what() << endl;
 	}
 }
 
